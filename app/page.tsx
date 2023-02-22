@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import AddPost from './components/AddPost';
 import Posts from './components/Posts';
+import { IPost } from './types/posts';
 
 const allPosts = async () => {
   const { data } = await axios.get('/api/posts/getPosts');
@@ -12,7 +13,7 @@ const allPosts = async () => {
 };
 
 export default function Home() {
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery<IPost[]>({
     queryFn: allPosts,
     queryKey: ['posts'],
   });
