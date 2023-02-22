@@ -35,6 +35,7 @@ export default function Home() {
             avatar={post.user.image}
             name={post.user.name}
             postTitle={post.title}
+            id={post.id}
           />
         ))}
     </main>
