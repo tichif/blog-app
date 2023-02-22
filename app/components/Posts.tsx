@@ -8,9 +8,15 @@ interface Props {
   name: string;
   postTitle: string;
   id: string;
+  comments?: {
+    createdAt: string;
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
 }
 
-const Posts = ({ avatar, name, postTitle, id }: Props) => {
+const Posts = ({ avatar, name, postTitle, id, comments }: Props) => {
   return (
     <div className='bg-white my-8 p-8 rounded-lg'>
       <div className='flex items-center gap-2'>
@@ -28,7 +34,9 @@ const Posts = ({ avatar, name, postTitle, id }: Props) => {
       </div>
       <div className='flex items-center gap-4 cursor-pointer'>
         <Link href={`/post/${id}`}>
-          <p className='text-sm font-bold text-gray-700'>Comments</p>
+          <p className='text-sm font-bold text-gray-700'>
+            {comments?.length} Comments
+          </p>
         </Link>
       </div>
     </div>
