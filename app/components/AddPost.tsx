@@ -9,6 +9,7 @@ const AddPost = () => {
   const [title, setTitle] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
   let toastPostId: string;
+  const queryClient = useQueryClient();
 
   // create post
   const { mutate } = useMutation(
@@ -20,6 +21,7 @@ const AddPost = () => {
       },
       onSuccess: (data) => {
         toast.success('Toast has been made', { id: toastPostId });
+        queryClient.invalidateQueries(['posts']);
         setTitle('');
         setIsDisabled(false);
         console.log(data);
