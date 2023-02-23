@@ -8,10 +8,16 @@ export interface IPost {
     image: string;
   };
   Comment?: {
+    message: string;
     createdAt: string;
     id: string;
     postId: string;
     userId: string;
+    user?: {
+      name: string;
+      email: string;
+      image: string;
+    };
   }[];
 }
 
@@ -25,6 +31,11 @@ interface Post {
     postId: string;
     userId: string;
     message: string;
+    user?: {
+      name: string;
+      email: string;
+      image: string;
+    };
   }[];
 }
 

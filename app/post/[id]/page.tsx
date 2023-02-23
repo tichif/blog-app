@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Image from 'next/image';
 
 import Post from '@/app/components/PostDetail';
 import { IPost } from '@/app/types/posts';
@@ -34,6 +35,26 @@ const PostDetail = ({ params }: { params: { id: string } }) => {
             postTitle={data.title}
           />
           <AddComment id={data.id} />
+          {data.Comment?.map((comment) => (
+            <div key={comment.id}>
+              <div className='my-6 bg-white p-8 rounded-md'>
+                <div className='flex items-center gap-2'>
+                  <Image
+                    width={24}
+                    height={24}
+                    alt='avatar'
+                    src={comment?.user?.image as string}
+                    className='rounded-full'
+                  />
+                  <h3 className='font-bold'>{comment?.user?.name}</h3>
+                  <h2 className='text-sm'>
+                    {new Date(comment.createdAt).toLocaleDateString()}
+                  </h2>
+                </div>
+                <div className='py-4'>{comment.message}</div>
+              </div>
+            </div>
+          ))}
         </>
       )}
     </div>
