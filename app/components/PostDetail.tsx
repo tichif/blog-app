@@ -32,7 +32,11 @@ const Posts = ({ avatar, name, postTitle, id, comments }: Props) => {
       <div className='my-8'>
         <p className='break-all'>{postTitle}</p>
       </div>
-      <div className='flex items-center gap-4 cursor-pointer'></div>
+      <div className='flex items-center gap-4 cursor-pointer'>
+        <p className='text-sm font-bold text-gray-700'>
+          {comments?.length} Comments
+        </p>
+      </div>
     </div>
   );
 };
